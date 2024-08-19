@@ -70,6 +70,8 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -84,8 +86,8 @@ class HomePage extends StatelessWidget {
                   color: Colors.grey[200],
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Row(
-                  children: const [
+                child: const Row(
+                  children:  [
                     Icon(Icons.search, color: Colors.grey),
                     SizedBox(width: 8),
                     Expanded(
@@ -123,13 +125,21 @@ class HomePage extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      buildCategoryIcon(context, 'Traffic Updates', Icons.traffic),
-                      buildCategoryIcon(context, 'Incident Reporting', Icons.report_problem),
-                      buildCategoryIcon(context, 'Route Optimization', Icons.alt_route),
-                    ],
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                    
+                        buildCategoryIcon(context, 'Traffic Updates', Icons.traffic),
+                           const SizedBox(width: 15,),
+                        buildCategoryIcon(context, 'Incident Reporting', Icons.report_problem),
+                           const SizedBox(width: 15,),
+                        buildCategoryIcon(context, 'Route Optimization', Icons.alt_route),
+                           const SizedBox(width: 15,),
+                        buildCategoryIcon(context, 'Traffic Cameras', Icons.camera_alt)
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(height: 16),
@@ -180,7 +190,7 @@ class HomePage extends StatelessWidget {
         const SizedBox(height: 8),
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
           ),
@@ -215,9 +225,11 @@ class HomePage extends StatelessWidget {
 }
 
 class MapPage extends StatelessWidget {
+  const MapPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text(
         'Map Page',
         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -227,9 +239,11 @@ class MapPage extends StatelessWidget {
 }
 
 class AlertsPage extends StatelessWidget {
+  const AlertsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Text(
         'Alerts Page',
         style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
