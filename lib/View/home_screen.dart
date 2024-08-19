@@ -46,8 +46,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     color: Colors.grey[200],
                     borderRadius: BorderRadius.circular(8),
                   ),
-                  child: Row(
-                    children: const [
+                  child: const Row(
+                    children:  [
                       Icon(Icons.search, color: Colors.grey),
                       SizedBox(width: 8),
                       Expanded(
@@ -168,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
         const SizedBox(height: 8),
         Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.bold,
           ),
