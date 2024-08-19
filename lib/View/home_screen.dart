@@ -13,6 +13,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Home Screen'),
+        centerTitle: true,
       ),
       body: const Center(
         child: Text('This is the home screen'),
