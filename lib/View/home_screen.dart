@@ -110,8 +110,8 @@ class HomePage extends StatelessWidget {
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
                   child: Image.asset(
-                    'assets/map.png', // Replace with your map image or use a Google Maps Widget
-                    fit: BoxFit.cover,
+                   '', // Replace with your map image or use a Google Maps Widget
+                   fit: BoxFit.cover,
                   ),
                 ),
               ),
