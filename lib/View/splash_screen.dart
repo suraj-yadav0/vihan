@@ -52,18 +52,3 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 }
-
-
-
-
-        // color: Colors.blue,
-        // child: const Center(
-        //   child: Text(
-        //     "Traffic Management",
-        //     style: TextStyle(
-        //       fontSize: 25,
-        //       fontWeight: FontWeight.w700,
-        //       color: Colors.white,
-        //     ),
-        //   ),
-        // ),

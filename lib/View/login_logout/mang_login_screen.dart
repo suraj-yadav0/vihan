@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vihan/View/login_logout/mang_signup_screen.dart';
+import 'package:vihan/View/widgets/manager_navbar_screen.dart';
 // import 'package:vihan/View/management_screen/home_screen.dart';
 import 'package:vihan/utils/colors.dart';
 
@@ -96,11 +97,12 @@ class _LoginScreenState extends State<MangLoginScreen> {
                   borderRadius: BorderRadius.circular(10),
                   child: InkWell(
                     onTap: () {
-                      // Navigator.push(
-                      //   context,
-                      //   MaterialPageRoute(
-                      //       builder: (context) => const HomeScreen()),
-                      // );
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ManagerNavbarScreen(),
+                        ),
+                      );
                     },
                     child: const Padding(
                       padding:

@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:vihan/View/management_screen/manager_home/manager_find_map_screen.dart';
 import 'package:vihan/View/user_screen/find_route_screen.dart';
 import 'package:vihan/utils/colors.dart';
 
-class UserHomeScreen extends StatefulWidget {
-  const UserHomeScreen({super.key});
+class ManagerMapScreen extends StatefulWidget {
+  const ManagerMapScreen({super.key});
 
   @override
-  State<UserHomeScreen> createState() => _UserHomeScreenState();
+  State<ManagerMapScreen> createState() => _UserHomeScreenState();
 }
 
-class _UserHomeScreenState extends State<UserHomeScreen> {
+class _UserHomeScreenState extends State<ManagerMapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -76,7 +77,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const FindRouteScreen(),
+                        builder: (context) => const ManagerFindMapScreen(),
                       ),
                     );
                   },
