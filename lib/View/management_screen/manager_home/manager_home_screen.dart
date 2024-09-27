@@ -130,8 +130,11 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                           const SizedBox(
                             width: 15,
                           ),
-                          buildCategoryIcon(
-                              context, 'Route Optimization', Icons.alt_route),
+                          InkWell(
+                            onTap: () {},
+                            child: buildCategoryIcon(
+                                context, 'Route Optimization', Icons.alt_route),
+                          ),
                           // const SizedBox(
                           //   width: 15,
                           // ),

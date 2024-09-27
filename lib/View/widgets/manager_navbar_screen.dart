@@ -27,6 +27,7 @@ class _ManagerNavbarScreenState extends State<ManagerNavbarScreen> {
             _currentIndex = index;
           });
         },
+        currentIndex: _currentIndex,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

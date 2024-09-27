@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:vihan/View/management_screen/manager_home/manager_find_map_screen.dart';
-import 'package:vihan/View/user_screen/find_route_screen.dart';
 import 'package:vihan/utils/colors.dart';
 
 class ManagerMapScreen extends StatefulWidget {
@@ -41,12 +40,12 @@ class _UserHomeScreenState extends State<ManagerMapScreen> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: Colors.grey),
+                border: Border.all(color: Colors.black),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: const Row(
                 children: [
-                  Icon(Icons.search, color: Colors.grey),
+                  Icon(Icons.search, color: Colors.black),
                   SizedBox(width: 10),
                   Text(
                     'Search Location',

@@ -100,7 +100,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: SizedBox(
-                  width: double.infinity,
+                  width: 200,
                   child: Material(
                     color: orangeColor,
                     borderRadius: BorderRadius.circular(10),

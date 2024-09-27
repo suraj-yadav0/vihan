@@ -40,12 +40,12 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(20),
-                border: Border.all(color: Colors.grey),
+                border: Border.all(color: Colors.black),
               ),
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: const Row(
                 children: [
-                  Icon(Icons.search, color: Colors.grey),
+                  Icon(Icons.search, color: Colors.black),
                   SizedBox(width: 10),
                   Text(
                     'Search Location',
