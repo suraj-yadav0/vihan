@@ -26,12 +26,17 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: GoogleMap(
+      body: currentPosition == null ? const Center(child: CircularProgressIndicator(),) :    GoogleMap(
         initialCameraPosition: const CameraPosition(
           target: googleplex,
           zoom: 14,
         ),
         markers: {
+           Marker(
+            markerId: const MarkerId('currentLocation'),
+            icon: BitmapDescriptor.defaultMarker,
+            position: currentPosition!,
+          ),
           const Marker(
             markerId: MarkerId('sourceLocation'),
             icon: BitmapDescriptor.defaultMarker,
