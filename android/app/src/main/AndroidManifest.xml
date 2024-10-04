@@ -30,11 +30,13 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-            <manifest ...
-  <application ...
-    <meta-data android:name="com.google.android.geo.API_KEY"
+
+        <meta-data android:name="com.google.android.geo.API_KEY"
                android:value="AIzaSyA1e7fRcF1cMA_iU_CkKb0S9uwZjoqcS1Y"/>
+            
     </application>
+
+    
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility and
          https://developer.android.com/reference/android/content/Intent#ACTION_PROCESS_TEXT.
@@ -46,4 +48,6 @@
             <data android:mimeType="text/plain"/>
         </intent>
     </queries>
+
+    
 </manifest>

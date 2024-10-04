@@ -9,7 +9,7 @@ class GoogleMapScreen extends StatefulWidget {
 }
 
 class _GoogleMapScreenState extends State<GoogleMapScreen> {
-  static const jagah = LatLng(37.4233, -122.0848) ;
+  static const jagah = LatLng(28.679079, 77.069710) ;
 
   @override
   Widget build(BuildContext context) {
