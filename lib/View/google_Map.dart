@@ -22,6 +22,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
       markers: {
       const  Marker(markerId: MarkerId('sourceLocation'),
         icon: BitmapDescriptor.defaultMarker,
+        position: googleplex,
         ),
       },
     );
