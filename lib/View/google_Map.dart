@@ -9,11 +9,11 @@ class GoogleMapScreen extends StatefulWidget {
 }
 
 class _GoogleMapScreenState extends State<GoogleMapScreen> {
-  static const jagah = LatLng(28.679079, 77.069710) ;
+  static const googleplex = LatLng(28.679079, 77.069710) ;
 
   @override
   Widget build(BuildContext context) {
-    return GoogleMap(initialCameraPosition: CameraPosition(target: jagah
+    return GoogleMap(initialCameraPosition: CameraPosition(target: googleplex, zoom: 14,
     
     ));
   }
