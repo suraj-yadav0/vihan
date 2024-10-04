@@ -24,6 +24,11 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
         icon: BitmapDescriptor.defaultMarker,
         position: googleplex,
         ),
+
+        const  Marker(markerId: MarkerId('destinationLocation'),
+        icon: BitmapDescriptor.defaultMarker,
+        position: mountainVeiw,
+        ),
       },
     );
   }
