@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:vihan/Data/const.dart';
 
 class GoogleMapScreen extends StatefulWidget {
   const GoogleMapScreen({super.key});
@@ -20,35 +22,40 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) async => await fetchLocation());
+    WidgetsBinding.instance
+        .addPostFrameCallback((_) async => await fetchLocation());
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: currentPosition == null ? const Center(child: CircularProgressIndicator(),) :    GoogleMap(
-        initialCameraPosition: const CameraPosition(
-          target: googleplex,
-          zoom: 14,
-        ),
-        markers: {
-           Marker(
-            markerId: const MarkerId('currentLocation'),
-            icon: BitmapDescriptor.defaultMarker,
-            position: currentPosition!,
-          ),
-          const Marker(
-            markerId: MarkerId('sourceLocation'),
-            icon: BitmapDescriptor.defaultMarker,
-            position: googleplex,
-          ),
-          const Marker(
-            markerId: MarkerId('destinationLocation'),
-            icon: BitmapDescriptor.defaultMarker,
-            position: mountainVeiw,
-          ),
-        },
-      ),
+      body: currentPosition == null
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : GoogleMap(
+              initialCameraPosition: const CameraPosition(
+                target: googleplex,
+                zoom: 14,
+              ),
+              markers: {
+                Marker(
+                  markerId: const MarkerId('currentLocation'),
+                  icon: BitmapDescriptor.defaultMarker,
+                  position: currentPosition!,
+                ),
+                const Marker(
+                  markerId: MarkerId('sourceLocation'),
+                  icon: BitmapDescriptor.defaultMarker,
+                  position: googleplex,
+                ),
+                const Marker(
+                  markerId: MarkerId('destinationLocation'),
+                  icon: BitmapDescriptor.defaultMarker,
+                  position: mountainVeiw,
+                ),
+              },
+            ),
     );
   }
 
@@ -82,5 +89,26 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
         print(currentLocation);
       }
     });
+  }
+
+  Future<List<LatLng>> fetchPolylinePoints() async {
+    final polyLinePoints = PolylinePoints();
+
+    final result = await polyLinePoints.getRouteBetweenCoordinates(
+         googleMapsApiKey,
+        PointLatLng(googleplex.latitude, googleplex.longitude),
+        PointLatLng(mountainVeiw.latitude, mountainVeiw.longitude),
+        );
+
+    if (result.points.isNotEmpty) {
+      return result.points
+          .map(
+            (point) => LatLng(point.latitude, point.longitude),
+          )
+          .toList();
+    } else {
+      debugPrint(result.errorMessage);
+      return [];
+    }
   }
 }
