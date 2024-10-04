@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vihan/View/google_Map.dart';
 import 'package:vihan/View/splash_screen.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const SplashScreen(),
+      home: const GoogleMapScreen(),
     );
   }
 }
