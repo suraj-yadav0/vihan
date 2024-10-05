@@ -21,15 +21,15 @@ class _UserHomeScreenState extends State<ManagerMapScreen> {
       body: Stack(
         children: [
           // Background map view placeholder (replace with actual map later)
-          Container(
-            color: Colors.grey[200],
-            child: const Center(
-              child: Text(
-                'Map View Placeholder',
-                style: TextStyle(color: Colors.grey),
-              ),
-            ),
-          ),
+          // Container(
+          //   color: Colors.grey[200],
+          //   child: const Center(
+          //     child: Text(
+          //       'Map View Placeholder',
+          //       style: TextStyle(color: Colors.grey),
+          //     ),
+          //   ),
+          // ),
           // Search bar at the top
           Positioned(
             top: 20,
