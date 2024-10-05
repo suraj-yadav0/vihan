@@ -94,7 +94,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
               LatLng(currentLocation.latitude!, currentLocation.longitude!);
         });
 
-        print(currentLocation);
+      //  print(currentLocation);
       }
     });
   }

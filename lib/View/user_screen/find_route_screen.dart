@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vihan/View/google_Map.dart';
+import 'package:vihan/View/google_map.dart';
 import 'package:vihan/utils/colors.dart';
 
 class FindRouteScreen extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vihan/View/google_Map.dart';
+import 'package:vihan/View/google_map.dart';
 import 'package:vihan/View/management_screen/manager_home/manager_find_map_screen.dart';
 import 'package:vihan/utils/colors.dart';
 
