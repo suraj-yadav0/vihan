@@ -18,12 +18,19 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
   static const mountainVeiw = LatLng(25.758503, 84.148911);
 
   LatLng? currentPosition;
+  Map<PolylineId, Polyline> polylines = {};
 
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance
         .addPostFrameCallback((_) async => await fetchLocation());
+  }
+
+  Future<void> initializeMap() async {
+    await fetchLocation();
+    final coordinates = await fetchPolylinePoints();
+    genratepPolyLineFromPoints(coordinates);
   }
 
   @override
@@ -55,6 +62,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
                   position: mountainVeiw,
                 ),
               },
+              polylines: Set<Polyline>.of(polylines.values),
             ),
     );
   }
@@ -95,10 +103,10 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
     final polyLinePoints = PolylinePoints();
 
     final result = await polyLinePoints.getRouteBetweenCoordinates(
-       googleMapsApiKey,
-        PointLatLng(googleplex.latitude, googleplex.longitude),
-        PointLatLng(mountainVeiw.latitude, mountainVeiw.longitude),
-        );
+      googleMapsApiKey,
+      PointLatLng(googleplex.latitude, googleplex.longitude),
+      PointLatLng(mountainVeiw.latitude, mountainVeiw.longitude),
+    );
 
     if (result.points.isNotEmpty) {
       return result.points
@@ -110,5 +118,20 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
       debugPrint(result.errorMessage);
       return [];
     }
+  }
+
+  Future<void> genratepPolyLineFromPoints(
+      List<LatLng> polylineCoordinates) async {
+    const id = PolylineId('polyline');
+
+    final polyline = Polyline(
+        polylineId: id,
+        color: Colors.blueAccent,
+        points: polylineCoordinates,
+        width: 5);
+
+    setState(() {
+      polylines[id] = polyline;
+    });
   }
 }
