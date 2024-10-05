@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vihan/View/google_Map.dart';
 import 'package:vihan/View/management_screen/manager_home/manager_find_map_screen.dart';
 import 'package:vihan/utils/colors.dart';
 
@@ -21,15 +22,7 @@ class _UserHomeScreenState extends State<ManagerMapScreen> {
       body: Stack(
         children: [
           // Background map view placeholder (replace with actual map later)
-          Container(
-            color: Colors.grey[200],
-            child: const Center(
-              child: Text(
-                'Map View Placeholder',
-                style: TextStyle(color: Colors.grey),
-              ),
-            ),
-          ),
+const GoogleMapScreen()
           // Search bar at the top
           Positioned(
             top: 20,
