@@ -21,15 +21,34 @@ class _UserHomeScreenState extends State<ManagerMapScreen> {
       body: Stack(
         children: [
           // Background map view placeholder (replace with actual map later)
-          // Container(
-          //   color: Colors.grey[200],
-          //   child: const Center(
-          //     child: Text(
-          //       'Map View Placeholder',
-          //       style: TextStyle(color: Colors.grey),
-          //     ),
-          //   ),
-          // ),
+           currentPosition == null
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : GoogleMap(
+              initialCameraPosition:  CameraPosition(
+                target: currentPosition!,
+                zoom: 14,
+              ),
+              markers: {
+                Marker(
+                  markerId: const MarkerId('currentLocation'),
+                  icon: BitmapDescriptor.defaultMarker,
+                  position: currentPosition!,
+                ),
+                const Marker(
+                  markerId: MarkerId('sourceLocation'),
+                  icon: BitmapDescriptor.defaultMarker,
+                  position: googleplex,
+                ),
+                const Marker(
+                  markerId: MarkerId('destinationLocation'),
+                  icon: BitmapDescriptor.defaultMarker,
+                  position: mountainVeiw,
+                ),
+              },
+              polylines: Set<Polyline>.of(polylines.values),
+            ),
           // Search bar at the top
           Positioned(
             top: 20,
