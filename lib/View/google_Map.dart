@@ -41,8 +41,8 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
               child: CircularProgressIndicator(),
             )
           : GoogleMap(
-              initialCameraPosition: const CameraPosition(
-                target: googleplex,
+              initialCameraPosition:  CameraPosition(
+                target: currentPosition!,
                 zoom: 14,
               ),
               markers: {
