@@ -79,13 +79,34 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                         ),
                       );
                     },
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(16),
-                      child: Image.asset(
-                        'assets/map.png', // Replace with your map image or use a Google Maps Widget
-                        fit: BoxFit.cover,
-                      ),
-                    ),
+                    child:currentPosition == null
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
+          : GoogleMap(
+              initialCameraPosition:  CameraPosition(
+                target: currentPosition!,
+                zoom: 14,
+              ),
+              markers: {
+                Marker(
+                  markerId: const MarkerId('currentLocation'),
+                  icon: BitmapDescriptor.defaultMarker,
+                  position: currentPosition!,
+                ),
+                const Marker(
+                  markerId: MarkerId('sourceLocation'),
+                  icon: BitmapDescriptor.defaultMarker,
+                  position: googleplex,
+                ),
+                const Marker(
+                  markerId: MarkerId('destinationLocation'),
+                  icon: BitmapDescriptor.defaultMarker,
+                  position: mountainVeiw,
+                ),
+              },
+              polylines: Set<Polyline>.of(polylines.values),
+            ),
                   ),
                 ),
               ],
