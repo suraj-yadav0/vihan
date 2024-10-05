@@ -95,7 +95,7 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
     final polyLinePoints = PolylinePoints();
 
     final result = await polyLinePoints.getRouteBetweenCoordinates(
-         googleMapsApiKey,
+       googleMapsApiKey,
         PointLatLng(googleplex.latitude, googleplex.longitude),
         PointLatLng(mountainVeiw.latitude, mountainVeiw.longitude),
         );
