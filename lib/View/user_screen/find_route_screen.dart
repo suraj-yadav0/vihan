@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vihan/View/google_Map.dart';
 import 'package:vihan/utils/colors.dart';
 
 class FindRouteScreen extends StatelessWidget {
@@ -60,11 +61,11 @@ class FindRouteScreen extends StatelessWidget {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.grey[300],
+                
                 borderRadius: BorderRadius.circular(10),
               ),
               margin: const EdgeInsets.all(16),
-              child: const Center(child: Text('Map View')),
+              child: const GoogleMapScreen(),
             ),
           ),
         ],
