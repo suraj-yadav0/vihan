@@ -103,9 +103,13 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
     final polyLinePoints = PolylinePoints();
 
     final result = await polyLinePoints.getRouteBetweenCoordinates(
-      googleMapsApiKey,
-      PointLatLng(googleplex.latitude, googleplex.longitude),
-      PointLatLng(mountainVeiw.latitude, mountainVeiw.longitude),
+      googleApiKey: googleMapsApiKey,
+      request: PolylineRequest(
+        origin: PointLatLng(googleplex.latitude, googleplex.longitude),
+        destination: PointLatLng(mountainVeiw.latitude, mountainVeiw.longitude),
+        mode: TravelMode.driving,
+       
+      ),
     );
 
     if (result.points.isNotEmpty) {
