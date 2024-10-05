@@ -22,7 +22,7 @@ class _UserHomeScreenState extends State<ManagerMapScreen> {
       body: Stack(
         children: [
           // Background map view placeholder (replace with actual map later)
-const GoogleMapScreen()
+const GoogleMapScreen(),
           // Search bar at the top
           Positioned(
             top: 20,
