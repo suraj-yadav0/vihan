@@ -72,6 +72,7 @@ const GoogleMapScreen(),
                 ),
                 const SizedBox(height: 10),
                 FloatingActionButton(
+                  backgroundColor: Colors.orange,
                   onPressed: () {
                     Navigator.push(
                       context,
@@ -82,7 +83,7 @@ const GoogleMapScreen(),
                   },
                   mini: true,
                   heroTag: 'directionButton',
-                  child: const Icon(Icons.directions),
+                  child: const Icon(Icons.directions,color: Colors.white,),
                 ),
               ],
             ),
@@ -92,10 +93,11 @@ const GoogleMapScreen(),
             left: 20,
             bottom: 50,
             child: FloatingActionButton(
+                backgroundColor: Colors.orange,
               onPressed: () {},
               mini: true,
               heroTag: 'trafficButton',
-              child: const Icon(Icons.traffic),
+              child: const Icon(Icons.traffic,color : Colors.white),
             ),
           ),
           // Top Right floating action button
@@ -103,11 +105,13 @@ const GoogleMapScreen(),
             top: 120,
             right: 20,
             child: FloatingActionButton(
+              backgroundColor: Colors.orange,
               onPressed: () {},
               mini: true,
               heroTag: 'compassButton',
               child: const Icon(
                 Icons.arrow_circle_down, // add correct icon of compass
+                color: Colors.white,
               ),
             ),
           ),
