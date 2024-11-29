@@ -16,16 +16,21 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: const Icon(Icons.menu, color: Colors.black),
+        leading: IconButton(
+          icon: const Icon(Icons.menu, color: Colors.white),
+          onPressed: () {
+           
+          },
+        ),
         centerTitle: true,
         elevation: 0,
         backgroundColor: orangeColor,
         title: const Text(
-          'Dashboard',
+          'D A S H B O A R D',
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
             fontSize: 24,
-            fontWeight: FontWeight.bold,
+           
           ),
         ),
         //    Setting
