@@ -170,7 +170,7 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                           context,
                           'Accident on 280 North',
                           'Avoid area near San Bruno Ave',
-                          'assets/city.png', // Replace with your image asset
+                          'assets/images/traffic2.jpg', // Replace with your image asset
                         ),
                       ],
                     ),
