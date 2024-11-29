@@ -16,15 +16,21 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.menu, color: Colors.white),
+          onPressed: () {
+           
+          },
+        ),
         centerTitle: true,
         elevation: 0,
         backgroundColor: orangeColor,
         title: const Text(
-          'Dashboard',
+          'D A S H B O A R D',
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
             fontSize: 24,
-            fontWeight: FontWeight.bold,
+           
           ),
         ),
         //    Setting
@@ -158,13 +164,13 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                           context,
                           'Heavy Traffic on 101 South',
                           '17 min delay',
-                          'assets/bridge.png', // Replace with your image asset
+                          'assets/images/traffic1.jpg', 
                         ),
                         buildTrafficConditionCard(
                           context,
                           'Accident on 280 North',
                           'Avoid area near San Bruno Ave',
-                          'assets/city.png', // Replace with your image asset
+                          'assets/images/traffic2.jpg', // Replace with your image asset
                         ),
                       ],
                     ),

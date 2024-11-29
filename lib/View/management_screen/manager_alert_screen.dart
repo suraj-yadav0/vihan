@@ -8,11 +8,13 @@ class ManagerAlertScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: const BackButton(color: Colors.white),
         backgroundColor: orangeColor,
         title: const Text(
-          'Traffic Alerts',
+          'A L E R T S',
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
+            fontSize: 24,
           ),
         ),
         centerTitle: true,
@@ -44,8 +46,8 @@ class TrafficAlertCard extends StatelessWidget {
             Container(
               width: 60,
               height: 60,
-              color: Colors.purple[100],
-              child: const Icon(Icons.image, color: Colors.purple, size: 40),
+              color: Colors.orange[100],
+              child: const Icon(Icons.image, color: Colors.orange, size: 40),
             ),
             const SizedBox(width: 16),
             // Text description
@@ -58,7 +60,7 @@ class TrafficAlertCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: Colors.purple,
+                      color: Colors.orange,
                     ),
                   ),
                   SizedBox(height: 8),
@@ -75,7 +77,7 @@ class TrafficAlertCard extends StatelessWidget {
             // Icon for location
             Icon(
               Icons.location_on,
-              color: Colors.green[700],
+              color: Colors.orange[700],
               size: 28,
             ),
           ],

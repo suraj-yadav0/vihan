@@ -12,8 +12,10 @@ class _UserReportScreenState extends State<UserReportScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+
       appBar: AppBar(
-        title: const Text("Profile"),
+        leading: const SizedBox(),
+        title: const Text("R E P O R T", style: TextStyle(color: Colors.white,fontSize: 24)),
         centerTitle: true,
         backgroundColor: orangeColor,
       ),

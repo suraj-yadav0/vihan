@@ -13,7 +13,11 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Profile"),
+        leading: SizedBox(),
+        title: const Text(
+          "P R O F I L E",
+          style: TextStyle(color: Colors.white, fontSize: 24),
+        ),
         centerTitle: true,
         backgroundColor: orangeColor,
       ),
@@ -149,6 +153,37 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                       child: Center(
                         child: Text(
                           "Update",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 22,
+                              fontWeight: FontWeight.w500),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 25,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: SizedBox(
+                width: double.infinity,
+                child: Material(
+                  color: orangeColor,
+                  borderRadius: BorderRadius.circular(10),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                      child: Center(
+                        child: Text(
+                          "Logout",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 22,
