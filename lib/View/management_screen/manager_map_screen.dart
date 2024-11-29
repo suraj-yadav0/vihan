@@ -15,7 +15,13 @@ class _UserHomeScreenState extends State<ManagerMapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Vihan"),
+        leading : IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+        title: const Text("V I H A N", style: TextStyle(color: Colors.white, fontSize: 24)),
         centerTitle: true,
         backgroundColor: orangeColor,
       ),
