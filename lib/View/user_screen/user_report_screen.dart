@@ -14,12 +14,7 @@ class _UserReportScreenState extends State<UserReportScreen> {
     return Scaffold(
 
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
+        leading: const SizedBox(),
         title: const Text("R E P O R T", style: TextStyle(color: Colors.white,fontSize: 24)),
         centerTitle: true,
         backgroundColor: orangeColor,
