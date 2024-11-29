@@ -19,7 +19,24 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
          leading: IconButton(
         icon: const Icon(Icons.menu, color: Colors.white),
         onPressed: () {
-          // Add drawer here
+          Drawer(
+            child: ListView(
+              children: const <Widget>[
+                ListTile(
+                  leading: Icon(Icons.home),
+                  title: Text('Home'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.report),
+                  title: Text('Report'),
+                ),
+                ListTile(
+                  leading: Icon(Icons.person),
+                  title: Text('Profile'),
+                ),
+              ],
+            ),
+          );
         },
       ),
         title: const Text("V I H A N", style: TextStyle(color: Colors.white, fontSize: 24)),
