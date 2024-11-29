@@ -16,6 +16,7 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: const Icon(Icons.menu, color: Colors.black),
         centerTitle: true,
         elevation: 0,
         backgroundColor: orangeColor,

@@ -8,11 +8,13 @@ class ManagerAlertScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: const BackButton(color: Colors.white),
         backgroundColor: orangeColor,
         title: const Text(
-          'Traffic Alerts',
+          'A L E R T S',
           style: TextStyle(
-            color: Colors.black,
+            color: Colors.white,
+            fontSize: 24,
           ),
         ),
         centerTitle: true,
