@@ -82,13 +82,15 @@
 ---
 
 ## 📸 Screenshots  
-![Home Screen](https://via.placeholder.com/400x300)  
+![HomeScreen](https://github.com/user-attachments/assets/c2a69aae-b22b-4193-8018-2b11b75ef70e)
+
 *Interactive Map and Route Suggestions*  
 
-![Alerts](https://via.placeholder.com/400x300)  
-*Traffic Alerts and Notifications*  
+![Dashboard](https://github.com/user-attachments/assets/f3181599-bf40-444b-bf09-bc63aa1c22c9)
 
-![Dashboard](https://via.placeholder.com/400x300)  
+*Traffic Alerts and Notifications*  
+![Profile](https://github.com/user-attachments/assets/e613963c-2a91-4aca-8ff2-70744c3a8ae2)
+
 *Smart Traffic Management System*  
 
 ---
