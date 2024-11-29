@@ -164,7 +164,7 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                           context,
                           'Heavy Traffic on 101 South',
                           '17 min delay',
-                          'assets/bridge.png', // Replace with your image asset
+                          'assets/images/traffic1.jpg', 
                         ),
                         buildTrafficConditionCard(
                           context,
