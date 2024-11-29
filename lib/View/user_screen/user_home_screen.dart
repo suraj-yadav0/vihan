@@ -14,38 +14,59 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
-      appBar: AppBar(
-         leading: IconButton(
-        icon: const Icon(Icons.menu, color: Colors.white),
-        onPressed: () {
-          Drawer(
-            child: ListView(
-              children: const <Widget>[
-                ListTile(
-                  leading: Icon(Icons.home),
-                  title: Text('Home'),
+      drawer: Drawer(
+        
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              decoration: BoxDecoration(
+                
+                color: orangeColor,
+              ),
+              child: const Text(
+                'VIHAN MENU',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
                 ),
-                ListTile(
-                  leading: Icon(Icons.report),
-                  title: Text('Report'),
-                ),
-                ListTile(
-                  leading: Icon(Icons.person),
-                  title: Text('Profile'),
-                ),
-              ],
+              ),
             ),
-          );
-        },
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text('Home'),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.report),
+              title: const Text('Report'),
+              onTap: () {
+                // Add navigation or action for Report
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.person),
+              title: const Text('Profile'),
+              onTap: () {
+                // Add navigation or action for Profile
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
       ),
+      appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
         title: const Text("V I H A N", style: TextStyle(color: Colors.white, fontSize: 24)),
         centerTitle: true,
         backgroundColor: orangeColor,
       ),
       body: Stack(
         children: [
-          // Background map view pl,aceholder (replace with actual map later)
+          // Existing body content remains the same
           const GoogleMapScreen(),
           // Search bar at the top
           Positioned(
@@ -75,7 +96,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
               ),
             ),
           ),
-          // Floating action buttons
+          // Floating action buttons (existing code remains the same)
           Positioned(
             right: 20,
             bottom: 50,
