@@ -49,7 +49,7 @@ const GoogleMapScreen(),
                   Text(
                     'Search Location',
                     style: TextStyle(
-                      color: Colors.purple,
+                      color: Colors.orange,
                       fontSize: 16,
                     ),
                   ),
@@ -64,10 +64,11 @@ const GoogleMapScreen(),
             child: Column(
               children: [
                 FloatingActionButton(
+                  backgroundColor: Colors.orange,
                   onPressed: () {},
                   mini: true,
                   heroTag: 'centerButton',
-                  child: const Icon(Icons.center_focus_strong_rounded),
+                  child: const Icon(Icons.center_focus_strong_rounded,color: Colors.white,),
                 ),
                 const SizedBox(height: 10),
                 FloatingActionButton(
