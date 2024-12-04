@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vihan/View/google_map.dart';
+
 import 'package:vihan/View/splash_screen.dart';
 
 void main() {
