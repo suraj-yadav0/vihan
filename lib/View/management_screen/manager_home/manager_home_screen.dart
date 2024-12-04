@@ -12,15 +12,110 @@ class ManagerHomeScreen extends StatefulWidget {
 }
 
 class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
+  // Function to handle route optimization navigation
+  void _navigateToRouteOptimization() {
+    // TODO: Implement Route Optimization screen
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Route Optimization - Coming Soon')),
+    );
+  }
+
+  // Function to handle traffic updates navigation
+  void _navigateToTrafficUpdates() {
+    // TODO: Implement Traffic Updates screen
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Traffic Updates - Coming Soon')),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+             DrawerHeader(
+              decoration: BoxDecoration(
+                color: orangeColor,
+              ),
+              child: const Text(
+                'Vihan Dashboard',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              leading: const Icon(Icons.home),
+              title: const Text('Dashboard'),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.map),
+              title: const Text('Map'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ManagerMapScreen(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.report_problem),
+              title: const Text('Incident Reporting'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const UserReportScreen(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.traffic),
+              title: const Text('Traffic Updates'),
+              onTap: () {
+                Navigator.pop(context);
+                _navigateToTrafficUpdates();
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.alt_route),
+              title: const Text('Route Optimization'),
+              onTap: () {
+                Navigator.pop(context);
+                _navigateToRouteOptimization();
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings),
+              title: const Text('Settings'),
+              onTap: () {
+                Navigator.pop(context);
+                // TODO: Implement Settings screen
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Settings - Coming Soon')),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.menu, color: Colors.white),
-          onPressed: () {
-           
-          },
+        leading: Builder(
+          builder: (context) => IconButton(
+            icon: const Icon(Icons.menu, color: Colors.white),
+            onPressed: () => Scaffold.of(context).openDrawer(),
+          ),
         ),
         centerTitle: true,
         elevation: 0,
@@ -30,19 +125,8 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
           style: TextStyle(
             color: Colors.white,
             fontSize: 24,
-           
           ),
         ),
-        //    Setting
-        // actions: [
-        //   IconButton(
-        //     icon: const Icon(
-        //       Icons.settings,
-        //       color: Colors.black,
-        //     ),
-        //     onPressed: () {},
-        //   ),
-        // ],
       ),
       body: Column(
         children: [
@@ -86,7 +170,8 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                         ),
                       );
                     },
-                    child: const GoogleMapScreen()),
+                    child: const GoogleMapScreen(),
+                  ),
                 ),
               ],
             ),
@@ -104,7 +189,7 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           InkWell(
-                            onTap: () {},
+                            onTap: _navigateToTrafficUpdates,
                             child: buildCategoryIcon(
                               context,
                               'Traffic Updates',
@@ -131,17 +216,10 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                             width: 15,
                           ),
                           InkWell(
-                            onTap: () {},
+                            onTap: _navigateToRouteOptimization,
                             child: buildCategoryIcon(
                                 context, 'Route Optimization', Icons.alt_route),
                           ),
-                          // const SizedBox(
-                          //   width: 15,
-                          // ),
-                          // InkWell(
-                          //   child: buildCategoryIcon(
-                          //       context, 'Traffic Report', Icons.camera_alt),
-                          // )
                         ],
                       ),
                     ),
@@ -170,7 +248,7 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                           context,
                           'Accident on 280 North',
                           'Avoid area near San Bruno Ave',
-                          'assets/images/traffic2.jpg', // Replace with your image asset
+                          'assets/images/traffic2.jpg',
                         ),
                       ],
                     ),
@@ -226,34 +304,6 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         subtitle: Text(subtitle),
-      ),
-    );
-  }
-}
-
-class MapPage extends StatelessWidget {
-  const MapPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Map Page',
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-      ),
-    );
-  }
-}
-
-class AlertsPage extends StatelessWidget {
-  const AlertsPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Alerts Page',
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
       ),
     );
   }
