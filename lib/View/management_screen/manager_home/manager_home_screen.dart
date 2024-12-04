@@ -14,7 +14,7 @@ class ManagerHomeScreen extends StatefulWidget {
 class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
   // Function to handle route optimization navigation
   void _navigateToRouteOptimization() {
-    // TODO: Implement Route Optimization screen
+  
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Route Optimization - Coming Soon')),
     );
@@ -22,7 +22,7 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
 
   // Function to handle traffic updates navigation
   void _navigateToTrafficUpdates() {
-    // TODO: Implement Traffic Updates screen
+   
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Traffic Updates - Coming Soon')),
     );
@@ -101,7 +101,7 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
               title: const Text('Settings'),
               onTap: () {
                 Navigator.pop(context);
-                // TODO: Implement Settings screen
+               
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Settings - Coming Soon')),
                 );
