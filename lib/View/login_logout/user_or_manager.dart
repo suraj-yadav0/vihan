@@ -26,12 +26,12 @@ class _UserOrManagerState extends State<UserOrManager> {
             Padding(
               padding: const EdgeInsets.all(20),
               child: Container(
-                height: 100,
-                width: 100,
+                height: 125,
+                width: 125,
                 decoration: const BoxDecoration(
                   color: Colors.white54,
                   image: DecorationImage(
-                    image: AssetImage("assets/images/traffic-light (1).png"),
+                    image: AssetImage("assets/images/traffic-light.png"),
                     fit: BoxFit.cover,
                   ),
                 ),
