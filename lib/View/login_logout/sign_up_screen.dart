@@ -1,7 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vihan/View/login_logout/login_screen.dart';
+import 'package:vihan/View/login_logout/profile_screen.dart';
 import 'package:vihan/View/widgets/user_navbar_screen.dart';
+
 import 'package:vihan/services/auth_service.dart';
 import 'package:vihan/utils/colors.dart';
 
@@ -108,7 +111,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 controller: _confirmPasswordController,
                 decoration: InputDecoration(
                   labelText: 'Confirm Password',
-                  prefixIcon: Icon(Icons.lock_confirm),
+                  prefixIcon: Icon(Icons.lock),
                 ),
                 obscureText: true,
                 validator: (val) {
@@ -202,7 +205,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         // Navigate to home screen for existing users
                         Navigator.of(context).pushReplacement(
                           MaterialPageRoute(
-                            builder: (context) => UserNavbarScreen(user: user)
+                            builder: (context) => UserNavbarScreen()
                           )
                         );
                       }
