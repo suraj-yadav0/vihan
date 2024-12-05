@@ -60,26 +60,28 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
               ElevatedButton(
                 child: Text('Complete Profile'),
                 onPressed: () async {
-                  if (_profileFormKey.currentState!.validate()) {
-                    // Save additional user profile information
-                    // You can use Firestore to store extra user details
-                    await FirebaseFirestore.instance
-                      .collection('users')
-                      .doc(widget.user.uid)
-                      .set({
-                        'username': username,
-                        'email': widget.user.email,
-                        'phoneNumber': phoneNumber ?? '',
-                        'createdAt': FieldValue.serverTimestamp(),
-                      });
 
-                    // Navigate to home screen
-                    Navigator.of(context).pushReplacement(
+                   Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
-                        builder: (context) => UserHomeScreen()
+                        builder: (context) => const UserHomeScreen(),
                       )
                     );
-                  }
+                  // if (_profileFormKey.currentState!.validate()) {
+                  //   // Save additional user profile information
+                  //   // You can use Firestore to store extra user details
+                  //   await FirebaseFirestore.instance
+                  //     .collection('users')
+                  //     .doc(widget.user.uid)
+                  //     .set({
+                  //       'username': username,
+                  //       'email': widget.user.email,
+                  //       'phoneNumber': phoneNumber ?? '',
+                  //       'createdAt': FieldValue.serverTimestamp(),
+                  //     });
+
+                  //   // Navigate to home screen
+                   
+                  // }
                 },
               ),
             ],
