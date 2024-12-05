@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vihan/View/management_screen/manager_alert_screen.dart';
 import 'package:vihan/View/management_screen/manager_home/manager_home_screen.dart';
 import 'package:vihan/View/management_screen/manager_map_screen.dart';
+import 'package:vihan/utils/colors.dart';
 
 class ManagerNavbarScreen extends StatefulWidget {
   const ManagerNavbarScreen({super.key});
@@ -42,8 +43,8 @@ class _ManagerNavbarScreenState extends State<ManagerNavbarScreen> {
             label: 'Alert',
           ),
         ],
-        selectedItemColor: Colors.orange,
-        unselectedItemColor: Colors.grey,
+        selectedItemColor: orangeColor,
+        unselectedItemColor: Colors.black,
       ),
       body: _pages[_currentIndex],
     );

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vihan/View/user_screen/user_profile_screen.dart';
 import 'package:vihan/View/user_screen/user_report_screen.dart';
+import 'package:vihan/utils/colors.dart';
 import '../user_screen/user_home_screen.dart';
 
 class UserNavbarScreen extends StatefulWidget {
@@ -43,8 +44,8 @@ class _UserHomeScreenState extends State<UserNavbarScreen> {
             label: 'Profile',
           ),
         ],
-        selectedItemColor: Colors.orange,
-        unselectedItemColor: Colors.grey,
+        selectedItemColor: orangeColor,
+        unselectedItemColor: Colors.black,
       ),
       body: _pages[currentPage],
     );

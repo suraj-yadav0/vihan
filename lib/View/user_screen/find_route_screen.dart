@@ -1,9 +1,19 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vihan/View/google_map.dart';
 import 'package:vihan/utils/colors.dart';
 
-class FindRouteScreen extends StatelessWidget {
+class FindRouteScreen extends StatefulWidget {
   const FindRouteScreen({super.key});
+
+  @override
+  State<FindRouteScreen> createState() => _FindRouteScreenState();
+}
+
+class _FindRouteScreenState extends State<FindRouteScreen> {
+  TextEditingController curLocController = TextEditingController();
+
+  TextEditingController desLocController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -16,52 +26,68 @@ class FindRouteScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          const Padding(
-            padding: EdgeInsets.all(16.0),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
                 // Text Fields for Location and Destination
-                LocationInputField(label: 'Your Location'),
-                SizedBox(height: 10),
-                LocationInputField(label: 'Choose Destination'),
+                LocationInputField(
+                  label: 'Your Location',
+                  controller: curLocController,
+                  icons: const Icon(Icons.add_location_outlined),
+                ),
+                const SizedBox(height: 10),
+                LocationInputField(
+                  label: 'Choose Destination',
+                  controller: desLocController,
+                  icons: const Icon(Icons.panorama_fish_eye),
+                ),
               ],
             ),
           ),
           // Mode of Transportation Icons
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TransportIcon(
-                  icon: Icons.directions_car,
-                  label: 'Car',
-                  onTap: () {},
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.directions_car,
+                  color: yellowColor,
+                  size: 40,
                 ),
-                TransportIcon(
-                  icon: Icons.motorcycle,
-                  label: 'Motorcycle',
-                  onTap: () {},
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.motorcycle,
+                  color: yellowColor,
+                  size: 40,
                 ),
-                TransportIcon(
-                  icon: Icons.pedal_bike,
-                  label: 'Bicycle',
-                  onTap: () {},
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.pedal_bike,
+                  color: yellowColor,
+                  size: 40,
                 ),
-                TransportIcon(
-                  icon: Icons.directions_walk,
-                  label: 'Walk',
-                  onTap: () {},
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.directions_walk,
+                  color: yellowColor,
+                  size: 40,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-          const SizedBox(height: 20),
+          // const SizedBox(height: 10),
           // Placeholder for map area
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                
                 borderRadius: BorderRadius.circular(10),
               ),
               margin: const EdgeInsets.all(16),
@@ -76,17 +102,34 @@ class FindRouteScreen extends StatelessWidget {
 
 class LocationInputField extends StatelessWidget {
   final String label;
-  const LocationInputField({super.key, required this.label});
+  final TextEditingController controller;
+  final Icon icons;
+  const LocationInputField(
+      {super.key, required this.label, required this.controller, required this.icons});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
+      cursorColor: orangeColor,
+      cursorHeight: 20,
       decoration: InputDecoration(
-        labelText: label,
-        border: const OutlineInputBorder(),
-        fillColor: Colors.grey[200],
+        hintText: label,
+        prefixIcon: icons,
         filled: true,
-        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        fillColor: Colors.grey[200],
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: const BorderSide(color: Colors.white),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: const BorderSide(color: Colors.white),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+          borderSide: const BorderSide(color: Colors.white),
+        ),
       ),
     );
   }
