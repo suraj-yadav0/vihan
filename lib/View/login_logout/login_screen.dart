@@ -138,6 +138,51 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
+
+
+             const SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: SizedBox(
+                width: 200,
+                child: Material(
+                  color: orangeColor,
+                  borderRadius: BorderRadius.circular(10),
+                  child: InkWell(
+                    onTap: () async {
+User? user = await _authService.signInWithGoogle();
+              if (user != null) {
+                       Navigator.push(
+                        // ignore: use_build_context_synchronously
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const UserNavbarScreen(),
+                        ),
+                      );
+              }
+            },
+               
+              
+                  
+                    child: const Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                      child: Center(
+                        child: Text(
+                          "Google Log In",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
             const SizedBox(
               height: 20,
             ),
