@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vihan/View/login_logout/sign_up_screen.dart';
@@ -44,10 +45,11 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(
               height: 10,
             ),
-            const Padding(
-              padding: EdgeInsets.all(12),
+            Padding(
+              padding:  const EdgeInsets.all(12),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _emailController,
+                decoration:  const InputDecoration(
                   border: OutlineInputBorder(
                     borderSide: BorderSide(
                       style: BorderStyle.solid,
@@ -63,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Padding(
               padding: const EdgeInsets.all(12),
               child: TextField(
+                controller: _passwordController,
                 obscureText: passToggle ? true : false,
                 decoration: InputDecoration(
                     border: const OutlineInputBorder(
@@ -99,14 +102,25 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: orangeColor,
                   borderRadius: BorderRadius.circular(10),
                   child: InkWell(
-                    onTap: () {
-                      Navigator.pushReplacement(
+                    onTap: () async {
+
+                       User? user = await _authService.signInWithEmailPassword(
+                _emailController.text, 
+                _passwordController.text
+              );
+              if (user != null) {
+                       Navigator.push(
+                        // ignore: use_build_context_synchronously
                         context,
                         MaterialPageRoute(
                           builder: (context) => const UserNavbarScreen(),
                         ),
                       );
-                    },
+              }
+            },
+               
+              
+                  
                     child: const Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 40, vertical: 15),
