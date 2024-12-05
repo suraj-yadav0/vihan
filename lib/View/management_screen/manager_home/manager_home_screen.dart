@@ -16,12 +16,12 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.menu, color: Colors.white),
-          onPressed: () {
-           
-          },
-        ),
+        // leading: IconButton(
+        //   icon: const Icon(Icons.menu, color: Colors.white),
+        //   onPressed: () {
+        //     Scaffold.of(context).openDrawer(); // Open the drawer
+        //   },
+        // ),
         centerTitle: true,
         elevation: 0,
         backgroundColor: orangeColor,
@@ -30,20 +30,11 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
           style: TextStyle(
             color: Colors.white,
             fontSize: 24,
-           
           ),
         ),
-        //    Setting
-        // actions: [
-        //   IconButton(
-        //     icon: const Icon(
-        //       Icons.settings,
-        //       color: Colors.black,
-        //     ),
-        //     onPressed: () {},
-        //   ),
-        // ],
       ),
+     
+      drawer: _buildDrawer(), // Adding the Drawer
       body: Column(
         children: [
           Padding(
@@ -86,7 +77,8 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                         ),
                       );
                     },
-                    child: const GoogleMapScreen()),
+                    child: const GoogleMapScreen(),
+                  ),
                 ),
               ],
             ),
@@ -104,16 +96,16 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              // Add your functionality for Traffic Updates
+                            },
                             child: buildCategoryIcon(
                               context,
                               'Traffic Updates',
                               Icons.traffic,
                             ),
                           ),
-                          const SizedBox(
-                            width: 15,
-                          ),
+                          const SizedBox(width: 15),
                           InkWell(
                             onTap: () {
                               Navigator.push(
@@ -124,24 +116,17 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                                 ),
                               );
                             },
-                            child: buildCategoryIcon(context,
-                                'Incident Reporting', Icons.report_problem),
+                            child: buildCategoryIcon(
+                                context, 'Incident Reporting', Icons.report_problem),
                           ),
-                          const SizedBox(
-                            width: 15,
-                          ),
+                          const SizedBox(width: 15),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              // Add your functionality for Route Optimization
+                            },
                             child: buildCategoryIcon(
                                 context, 'Route Optimization', Icons.alt_route),
                           ),
-                          // const SizedBox(
-                          //   width: 15,
-                          // ),
-                          // InkWell(
-                          //   child: buildCategoryIcon(
-                          //       context, 'Traffic Report', Icons.camera_alt),
-                          // )
                         ],
                       ),
                     ),
@@ -164,13 +149,13 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                           context,
                           'Heavy Traffic on 101 South',
                           '17 min delay',
-                          'assets/images/traffic1.jpg', 
+                          'assets/images/traffic1.jpg',
                         ),
                         buildTrafficConditionCard(
                           context,
                           'Accident on 280 North',
                           'Avoid area near San Bruno Ave',
-                          'assets/images/traffic2.jpg', // Replace with your image asset
+                          'assets/images/traffic2.jpg',
                         ),
                       ],
                     ),
@@ -178,6 +163,69 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                 ],
               ),
             ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  // Drawer Widget
+  Widget _buildDrawer() {
+    return Drawer(
+      child: ListView(
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(color: orangeColor),
+            child: const Text(
+              'Menu',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 24,
+              ),
+            ),
+          ),
+          ListTile(
+            leading: const Icon(Icons.map),
+            title: const Text('Map'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const ManagerMapScreen()),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.traffic),
+            title: const Text('Traffic Updates'),
+            onTap: () {
+              // Add Traffic Updates functionality
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.report_problem),
+            title: const Text('Incident Reports'),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const UserReportScreen(),
+                ),
+              );
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.settings),
+            title: const Text('Settings'),
+            onTap: () {
+              // Add Settings functionality
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.logout),
+            title: const Text('Logout'),
+            onTap: () {
+              // Handle Logout functionality
+            },
           ),
         ],
       ),
@@ -226,34 +274,6 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
           style: const TextStyle(fontWeight: FontWeight.bold),
         ),
         subtitle: Text(subtitle),
-      ),
-    );
-  }
-}
-
-class MapPage extends StatelessWidget {
-  const MapPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Map Page',
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-      ),
-    );
-  }
-}
-
-class AlertsPage extends StatelessWidget {
-  const AlertsPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        'Alerts Page',
-        style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
       ),
     );
   }
