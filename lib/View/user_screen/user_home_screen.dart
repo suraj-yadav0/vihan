@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vihan/View/google_map.dart';
+import 'package:vihan/View/login_logout/login_screen.dart';
 import 'package:vihan/View/user_screen/find_route_screen.dart';
 import 'package:vihan/View/user_screen/menu_screen.dart';
 import 'package:vihan/View/user_screen/search_location.dart';
@@ -140,9 +141,9 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
         centerTitle: true,
         backgroundColor: orangeColor,
       ),
-      body: Stack(
+      body: const Stack(
         children: [
-          const GoogleMapScreen(),
+           GoogleMapScreen(),
           // Existing search bar and floating action buttons remain the same
           // (as in the original implementation)
         ],
@@ -166,12 +167,9 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
             TextButton(
               child: const Text('Logout'),
               onPressed: () {
-                // Implement actual logout logic here
-                // For example:
-                // - Clear user session
-                // - Navigate to login screen
-                Navigator.of(context).pop();
-                // Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginScreen()));
+               
+              //  Navigator.of(context).pop();
+                 Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => const LoginScreen()));
               },
             ),
           ],
