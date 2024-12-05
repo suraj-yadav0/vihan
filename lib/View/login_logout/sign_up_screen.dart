@@ -18,33 +18,29 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   bool passToggle = true;
 
-   final AuthService _authService = AuthService();
+  final AuthService _authService = AuthService();
   final _formKey = GlobalKey<FormState>();
 
-
-   // Controllers for form fields
+  // Controllers for form fields
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController = TextEditingController();
-
 
   String email = '';
   String password = '';
   String error = '';
   bool isLoading = false;
 
-
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.white,
-      child: SingleChildScrollView(
+    return Scaffold(
+      body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(
-                height: 100,
-              ),
+              const SizedBox(height: 50),
+              // App Logo or Banner
               Padding(
                 padding: const EdgeInsets.all(12),
                 child: Container(
@@ -59,189 +55,193 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
               ),
-             Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: ListView(
-            children: <Widget>[
-              // Email Input
-              TextFormField(
-                controller: _emailController,
-                decoration: InputDecoration(
-                  labelText: 'Email',
-                  prefixIcon: Icon(Icons.email),
-                ),
-                validator: (val) {
-                  if (val == null || val.isEmpty) {
-                    return 'Enter an email';
-                  }
-                  // Basic email validation
-                  bool emailValid = RegExp(
-                    r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$'
-                  ).hasMatch(val);
-                  return emailValid ? null : 'Enter a valid email';
-                },
-                onChanged: (val) {
-                  setState(() => email = val);
-                },
-              ),
-
-              // Password Input
-              TextFormField(
-                controller: _passwordController,
-                decoration: InputDecoration(
-                  labelText: 'Password',
-                  prefixIcon: Icon(Icons.lock),
-                ),
-                obscureText: true,
-                validator: (val) {
-                  if (val == null || val.length < 6) {
-                    return 'Password must be at least 6 characters long';
-                  }
-                  return null;
-                },
-                onChanged: (val) {
-                  setState(() => password = val);
-                },
-              ),
-
-              // Confirm Password Input
-              TextFormField(
-                controller: _confirmPasswordController,
-                decoration: InputDecoration(
-                  labelText: 'Confirm Password',
-                  prefixIcon: Icon(Icons.lock),
-                ),
-                obscureText: true,
-                validator: (val) {
-                  if (val != _passwordController.text) {
-                    return 'Passwords do not match';
-                  }
-                  return null;
-                },
-              ),
-
-              // Sign Up Button
-              SizedBox(height: 20),
-              ElevatedButton(
-                child: Text('Sign Up'),
-                onPressed: () async {
-                  if (_formKey.currentState!.validate()) {
-                    setState(() => isLoading = true);
-                    
-                    try {
-                      User? user = await _authService.registerWithEmailPassword(
-                        email, 
-                        password
-                      );
-                      
-                      if (user != null) {
-                        // Navigate to home or profile setup screen
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (context) => ProfileSetupScreen(user: user)
-                          )
-                        );
-                      }
-                    } catch (e) {
-                      setState(() {
-                        error = 'Could not sign up: ${e.toString()}';
-                        isLoading = false;
-                      });
-                    }
-                  }
-                },
-              ),
-
-              // Error Display
-              SizedBox(height: 12),
-              Text(
-                error,
-                style: TextStyle(color: Colors.red, fontSize: 14),
-              ),
-
-              // Divider
+              const SizedBox(height: 20),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 10),
-                child: Row(
-                  children: <Widget>[
-                    Expanded(child: Divider()),
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 10),
-                      child: Text('OR'),
-                    ),
-                    Expanded(child: Divider()),
-                  ],
-                ),
-              ),
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      // Email Input
+                      TextFormField(
+                        controller: _emailController,
+                        decoration: const InputDecoration(
+                          labelText: 'Email',
+                          prefixIcon: Icon(Icons.email),
+                        ),
+                        validator: (val) {
+                          if (val == null || val.isEmpty) {
+                            return 'Enter an email';
+                          }
+                          // Basic email validation
+                          bool emailValid = RegExp(
+                                  r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$')
+                              .hasMatch(val);
+                          return emailValid ? null : 'Enter a valid email';
+                        },
+                        onChanged: (val) {
+                          setState(() => email = val);
+                        },
+                      ),
+                      const SizedBox(height: 16),
 
-              // Google Sign-Up Button
-              OutlinedButton.icon(
-                icon: Image.network(
-                  'https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google_provider_logo.svg',
-                  width: 24,
-                  height: 24,
-                ),
-                label: Text('Sign Up with Google'),
-                onPressed: () async {
-                  setState(() => isLoading = true);
-                  
-                  try {
-                    User? user = await _authService.signInWithGoogle();
-                    
-                    if (user != null) {
-                      // Check if it's a new user
-                      bool isNewUser = user.metadata.creationTime == user.metadata.lastSignInTime;
-                      
-                      if (isNewUser) {
-                        // Navigate to profile setup
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (context) => ProfileSetupScreen(user: user)
-                          )
-                        );
-                      } else {
-                        // Navigate to home screen for existing users
-                        Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                            builder: (context) => UserNavbarScreen()
-                          )
-                        );
-                      }
-                    }
-                  } catch (e) {
-                    setState(() {
-                      error = 'Google Sign-Up failed: ${e.toString()}';
-                      isLoading = false;
-                    });
-                  }
-                },
-              ),
+                      // Password Input
+                      TextFormField(
+                        controller: _passwordController,
+                        decoration: const InputDecoration(
+                          labelText: 'Password',
+                          prefixIcon: Icon(Icons.lock),
+                        ),
+                        obscureText: true,
+                        validator: (val) {
+                          if (val == null || val.length < 6) {
+                            return 'Password must be at least 6 characters long';
+                          }
+                          return null;
+                        },
+                        onChanged: (val) {
+                          setState(() => password = val);
+                        },
+                      ),
+                      const SizedBox(height: 16),
 
-              // Login Option
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text('Already have an account?'),
-                  TextButton(
-                    child: Text('Login'),
-                    onPressed: () {
-                      // Navigate to login screen
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => LoginScreen()
-                        )
-                      );
-                    },
+                      // Confirm Password Input
+                      TextFormField(
+                        controller: _confirmPasswordController,
+                        decoration: const InputDecoration(
+                          labelText: 'Confirm Password',
+                          prefixIcon: Icon(Icons.lock),
+                        ),
+                        obscureText: true,
+                        validator: (val) {
+                          if (val != _passwordController.text) {
+                            return 'Passwords do not match';
+                          }
+                          return null;
+                        },
+                      ),
+                      const SizedBox(height: 20),
+
+                      // Sign Up Button
+                      ElevatedButton(
+                        child: isLoading
+                            ? const CircularProgressIndicator(
+                                color: Colors.white,
+                              )
+                            : const Text('Sign Up'),
+                        onPressed: () async {
+                          if (_formKey.currentState!.validate()) {
+                            setState(() => isLoading = true);
+
+                            try {
+                              User? user =
+                                  await _authService.registerWithEmailPassword(
+                                      email, password);
+
+                              if (user != null) {
+                                // Navigate to home or profile setup screen
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        ProfileSetupScreen(user: user),
+                                  ),
+                                );
+                              }
+                            } catch (e) {
+                              setState(() {
+                                error = 'Could not sign up: ${e.toString()}';
+                                isLoading = false;
+                              });
+                            }
+                          }
+                        },
+                      ),
+                      const SizedBox(height: 12),
+
+                      // Error Display
+                      Text(
+                        error,
+                        style: const TextStyle(color: Colors.red, fontSize: 14),
+                      ),
+
+                      // Divider
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 10),
+                        child: Row(
+                          children: const [
+                            Expanded(child: Divider()),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 10),
+                              child: Text('OR'),
+                            ),
+                            Expanded(child: Divider()),
+                          ],
+                        ),
+                      ),
+
+                      // Google Sign-Up Button
+                      OutlinedButton.icon(
+                        icon: Image.network(
+                          'https://registry.npmmirror.com/@lobehub/icons-static-png/1.8.0/files/dark/google-color.png',
+                          width: 24,
+                          height: 24,
+                        ),
+                        label: const Text('Sign Up with Google'),
+                        onPressed: () async {
+                          setState(() => isLoading = true);
+
+                          try {
+                            User? user = await _authService.signInWithGoogle();
+
+                            if (user != null) {
+                              bool isNewUser = user.metadata.creationTime ==
+                                  user.metadata.lastSignInTime;
+
+                              if (isNewUser) {
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        ProfileSetupScreen(user: user),
+                                  ),
+                                );
+                              } else {
+                                Navigator.of(context).pushReplacement(
+                                  MaterialPageRoute(
+                                    builder: (context) => UserNavbarScreen(),
+                                  ),
+                                );
+                              }
+                            }
+                          } catch (e) {
+                            setState(() {
+                              error =
+                                  'Google Sign-Up failed: ${e.toString()}';
+                              isLoading = false;
+                            });
+                          }
+                        },
+                      ),
+
+                      // Login Option
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text('Already have an account?'),
+                          TextButton(
+                            child: const Text('Login'),
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => LoginScreen()),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ],
-          ),
-        ),
-      ),
-    
             ],
           ),
         ),
