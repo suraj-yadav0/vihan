@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vihan/View/google_map.dart';
+import 'package:vihan/View/widgets/google_map.dart';
 import 'package:vihan/View/login_logout/login_screen.dart';
 import 'package:vihan/View/user_screen/find_route_screen.dart';
 import 'package:vihan/View/user_screen/menu_screen.dart';

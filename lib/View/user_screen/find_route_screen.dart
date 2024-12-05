@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:vihan/View/google_map.dart';
+import 'package:vihan/View/widgets/google_map.dart';
 import 'package:vihan/utils/colors.dart';
 
 class FindRouteScreen extends StatefulWidget {
