@@ -17,6 +17,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
    final AuthService _authService = AuthService();
   final _formKey = GlobalKey<FormState>();
+
+
+   // Controllers for form fields
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Material(
