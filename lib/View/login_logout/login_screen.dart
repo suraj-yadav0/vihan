@@ -1,7 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vihan/View/login_logout/sign_up_screen.dart';
 import 'package:vihan/View/widgets/user_navbar_screen.dart';
+import 'package:vihan/services/auth_service.dart';
 import 'package:vihan/utils/colors.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -12,6 +14,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthService _authService = AuthService();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
   bool passToggle = true;
   @override
   Widget build(BuildContext context) {
@@ -40,18 +45,19 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(
               height: 10,
             ),
-            const Padding(
-              padding: EdgeInsets.all(12),
+            Padding(
+              padding:  const EdgeInsets.all(12),
               child: TextField(
-                decoration: InputDecoration(
+                controller: _emailController,
+                decoration:  const InputDecoration(
                   border: OutlineInputBorder(
                     borderSide: BorderSide(
                       style: BorderStyle.solid,
                       color: Colors.black54,
                     ),
                   ),
-                  hintText: 'Enter Usernmae',
-                  label: Text('Username'),
+                  hintText: 'Enter Email',
+                  label: Text('Email'),
                   prefixIcon: Icon(Icons.person),
                 ),
               ),
@@ -59,6 +65,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Padding(
               padding: const EdgeInsets.all(12),
               child: TextField(
+                controller: _passwordController,
                 obscureText: passToggle ? true : false,
                 decoration: InputDecoration(
                     border: const OutlineInputBorder(
@@ -95,14 +102,25 @@ class _LoginScreenState extends State<LoginScreen> {
                   color: orangeColor,
                   borderRadius: BorderRadius.circular(10),
                   child: InkWell(
-                    onTap: () {
-                      Navigator.pushReplacement(
+                    onTap: () async {
+
+                       User? user = await _authService.signInWithEmailPassword(
+                _emailController.text, 
+                _passwordController.text
+              );
+              if (user != null) {
+                       Navigator.push(
+                        // ignore: use_build_context_synchronously
                         context,
                         MaterialPageRoute(
                           builder: (context) => const UserNavbarScreen(),
                         ),
                       );
-                    },
+              }
+            },
+               
+              
+                  
                     child: const Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 40, vertical: 15),
@@ -112,6 +130,51 @@ class _LoginScreenState extends State<LoginScreen> {
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 25,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ),
+
+
+             const SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: SizedBox(
+                width: 200,
+                child: Material(
+                  color: orangeColor,
+                  borderRadius: BorderRadius.circular(10),
+                  child: InkWell(
+                    onTap: () async {
+User? user = await _authService.signInWithGoogle();
+              if (user != null) {
+                       Navigator.push(
+                        // ignore: use_build_context_synchronously
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const UserNavbarScreen(),
+                        ),
+                      );
+              }
+            },
+               
+              
+                  
+                    child: const Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                      child: Center(
+                        child: Text(
+                          "Google Log In",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
                               fontWeight: FontWeight.bold),
                         ),
                       ),
