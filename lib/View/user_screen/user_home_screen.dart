@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:vihan/View/google_map.dart';
 import 'package:vihan/View/user_screen/find_route_screen.dart';
+import 'package:vihan/View/user_screen/menu_screen.dart';
 import 'package:vihan/View/user_screen/search_location.dart';
-import 'package:vihan/View/user_screen/profile_screen.dart'; // New import for profile
-import 'package:vihan/View/user_screen/report_screen.dart'; // New import for report
-import 'package:vihan/View/user_screen/settings_screen.dart'; // New import for settings
+
 import 'package:vihan/utils/colors.dart';
 
 class UserHomeScreen extends StatefulWidget {
@@ -162,11 +161,11 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
           actions: <Widget>[
             TextButton(
               child: const Text('Cancel'),
-              onTap: () => Navigator.of(context).pop(),
+              onPressed: () => Navigator.of(context).pop(),
             ),
             TextButton(
               child: const Text('Logout'),
-              onTap: () {
+              onPressed: () {
                 // Implement actual logout logic here
                 // For example:
                 // - Clear user session
