@@ -9,6 +9,7 @@ class ProfileSetupScreen extends StatefulWidget {
   ProfileSetupScreen({required this.user});
 
   @override
+  // ignore: library_private_types_in_public_api
   _ProfileSetupScreenState createState() => _ProfileSetupScreenState();
 }
 
@@ -29,7 +30,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
             children: <Widget>[
               // Username Input
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Username',
                   prefixIcon: Icon(Icons.person),
                 ),
@@ -46,7 +47,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
 
               // Phone Number Input
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Phone Number (Optional)',
                   prefixIcon: Icon(Icons.phone),
                 ),
@@ -56,9 +57,9 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                 },
               ),
 
-              SizedBox(height: 20),
+            const  SizedBox(height: 20),
               ElevatedButton(
-                child: Text('Complete Profile'),
+                child: const Text('Complete Profile'),
                 onPressed: () async {
 
                    Navigator.of(context).pushReplacement(

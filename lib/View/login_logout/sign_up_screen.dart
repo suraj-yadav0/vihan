@@ -165,8 +165,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
 
                       // Divider
-                      Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 10),
+                    const  Padding(
+                        padding: EdgeInsets.symmetric(vertical: 10),
                         child: Row(
                           children: const [
                             Expanded(child: Divider()),
@@ -198,6 +198,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   user.metadata.lastSignInTime;
 
                               if (isNewUser) {
+                                // ignore: use_build_context_synchronously
                                 Navigator.of(context).pushReplacement(
                                   MaterialPageRoute(
                                     builder: (context) =>
@@ -232,7 +233,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             onPressed: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                    builder: (context) => LoginScreen()),
+                                    builder: (context) => const LoginScreen()),
                               );
                             },
                           ),
