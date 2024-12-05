@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "498124971501",
+    "project_id": "vihan-traffic-management",
+    "storage_bucket": "vihan-traffic-management.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:498124971501:android:dea2f8344f0f80c9415be4",
+        "android_client_info": {
+          "package_name": "com.vihan.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpMIovaBap68XjjgauKFLw0wIXvITvEWk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
