@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:vihan/View/login_logout/login_screen.dart';
 import 'package:vihan/View/widgets/user_navbar_screen.dart';
+import 'package:vihan/services/auth_service.dart';
 import 'package:vihan/utils/colors.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -13,6 +14,9 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   bool passToggle = true;
+
+   final AuthService _authService = AuthService();
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Material(
