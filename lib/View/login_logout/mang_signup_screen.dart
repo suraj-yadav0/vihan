@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vihan/View/login_logout/login_screen.dart';
-// import 'package:vihan/View/management_screen/home_screen.dart';
 import 'package:vihan/utils/colors.dart';
 
 class MangSignupScreen extends StatefulWidget {
@@ -100,10 +100,10 @@ class _SignUpScreenState extends State<MangSignupScreen> {
               Padding(
                 padding: const EdgeInsets.all(10),
                 child: SizedBox(
-                  width: 200,
+                  width: double.infinity,
                   child: Material(
                     color: orangeColor,
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(25),
                     child: InkWell(
                       onTap: () {
                         // Navigator.push(
@@ -120,7 +120,7 @@ class _SignUpScreenState extends State<MangSignupScreen> {
                             "Sign Up",
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 25,
+                                fontSize: 18,
                                 fontWeight: FontWeight.bold),
                           ),
                         ),
@@ -129,8 +129,37 @@ class _SignUpScreenState extends State<MangSignupScreen> {
                   ),
                 ),
               ),
-              const SizedBox(
-                height: 10,
+              SizedBox(height: 20,),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+                child: Row(
+                  children: const [
+                    Expanded(child: Divider()),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Text('OR'),
+                    ),
+                    Expanded(child: Divider()),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: SizedBox(
+                  width: double.infinity,
+                  height: 50,
+                  child: OutlinedButton.icon(
+                    icon: SvgPicture.asset(
+                      "assets/images/google_icon.svg",
+                      width: 23,
+                      height: 23,
+                    ),
+                    label: const Text(
+                      'Sign in with Google',
+                      style: TextStyle(fontSize: 16, color: Colors.black),
+                    ),
+                    onPressed: () {},),
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -138,7 +167,7 @@ class _SignUpScreenState extends State<MangSignupScreen> {
                   const Text(
                     "Already have account",
                     style: TextStyle(
-                        color: Colors.black54,
+                        color: Colors.black,
                         fontSize: 16,
                         fontWeight: FontWeight.w500),
                   ),
@@ -156,7 +185,6 @@ class _SignUpScreenState extends State<MangSignupScreen> {
                         style: TextStyle(
                           fontSize: 18,
                           color: orangeColor,
-                          fontWeight: FontWeight.bold,
                         ),
                       ))
                 ],
