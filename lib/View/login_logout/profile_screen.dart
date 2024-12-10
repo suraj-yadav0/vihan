@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:vihan/View/user_screen/user_home_screen.dart';
+import 'package:vihan/View/widgets/user_navbar_screen.dart';
+import 'package:vihan/utils/colors.dart';
 
 class ProfileSetupScreen extends StatefulWidget {
   final User user;
@@ -32,6 +34,7 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                 decoration: const InputDecoration(
                   labelText: 'Username',
                   prefixIcon: Icon(Icons.person),
+                  border: OutlineInputBorder()
                 ),
                 validator: (val) {
                   if (val == null || val.isEmpty) {
@@ -43,12 +46,14 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                   setState(() => username = val);
                 },
               ),
+              SizedBox(height: 20,),
 
               // Phone Number Input
               TextFormField(
                 decoration: const InputDecoration(
                   labelText: 'Phone Number (Optional)',
                   prefixIcon: Icon(Icons.phone),
+                  border: OutlineInputBorder()
                 ),
                 keyboardType: TextInputType.phone,
                 onChanged: (val) {
@@ -56,14 +61,15 @@ class _ProfileSetupScreenState extends State<ProfileSetupScreen> {
                 },
               ),
 
-            const  SizedBox(height: 20),
+            const  SizedBox(height: 30),
               ElevatedButton(
-                child: const Text('Complete Profile'),
+                child: const Text('Complete Profile', style: TextStyle(color: Colors.white, fontSize: 18),),
+                style: ElevatedButton.styleFrom(backgroundColor: orangeColor,minimumSize: Size(double.infinity, 50)),
                 onPressed: () async {
 
                    Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
-                        builder: (context) => const UserHomeScreen(),
+                        builder: (context) => const UserNavbarScreen(),
                       )
                     );
                   // if (_profileFormKey.currentState!.validate()) {
