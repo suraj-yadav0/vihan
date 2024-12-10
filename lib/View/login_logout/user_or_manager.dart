@@ -108,7 +108,7 @@ class _UserOrManagerState extends State<UserOrManager> {
                         padding:
                             EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                         child: Text(
-                          "Manage",
+                          "Admin",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 22,

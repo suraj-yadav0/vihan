@@ -12,7 +12,6 @@ class _UserReportScreenState extends State<UserReportScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
       appBar: AppBar(
         leading: const SizedBox(),
         title: const Text("R E P O R T", style: TextStyle(color: Colors.white,fontSize: 24)),
@@ -24,6 +23,7 @@ class _UserReportScreenState extends State<UserReportScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            SizedBox(height: 30,),
             // Text input field
             Container(
               decoration: BoxDecoration(
@@ -80,10 +80,10 @@ class _UserReportScreenState extends State<UserReportScreen> {
               padding: const EdgeInsets.all(10),
               child: Center(
                 child: SizedBox(
-                  width: 200,
+                  width: double.infinity,
                   child: Material(
                     color: orangeColor,
-                    borderRadius: BorderRadius.circular(10),
+                    borderRadius: BorderRadius.circular(25),
                     child: const InkWell(
                       child: Padding(
                         padding:
