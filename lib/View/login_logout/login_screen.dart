@@ -1,6 +1,9 @@
+// import 'dart:nativewrappers/_internal/vm/lib/ffi_native_type_patch.dart';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:vihan/View/login_logout/sign_up_screen.dart';
 import 'package:vihan/View/widgets/user_navbar_screen.dart';
 import 'package:vihan/services/auth_service.dart';
@@ -20,6 +23,8 @@ class _LoginScreenState extends State<LoginScreen> {
   bool passToggle = true;
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
     return Material(
       color: Colors.white,
       child: SingleChildScrollView(
@@ -46,19 +51,16 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 10,
             ),
             Padding(
-              padding:  const EdgeInsets.all(12),
+              padding: const EdgeInsets.all(12),
               child: TextField(
                 controller: _emailController,
-                decoration:  const InputDecoration(
+                decoration: InputDecoration(
                   border: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      style: BorderStyle.solid,
-                      color: Colors.black54,
-                    ),
+                    borderRadius: BorderRadius.circular(5),
                   ),
                   hintText: 'Enter Email',
-                  label: Text('Email'),
-                  prefixIcon: Icon(Icons.person),
+                  label: const Text('Email'),
+                  prefixIcon: const Icon(Icons.person),
                 ),
               ),
             ),
@@ -68,27 +70,26 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: _passwordController,
                 obscureText: passToggle ? true : false,
                 decoration: InputDecoration(
-                    border: const OutlineInputBorder(
-                      borderSide: BorderSide(
-                        color: Colors.black54,
-                      ),
-                    ),
-                    hintText: 'Enter Password',
-                    label: const Text('Password'),
-                    prefixIcon: const Icon(Icons.lock),
-                    suffixIcon: InkWell(
-                      onTap: () {
-                        if (passToggle == true) {
-                          passToggle = false;
-                        } else {
-                          passToggle = true;
-                        }
-                        setState(() {});
-                      },
-                      child: passToggle
-                          ? const Icon(CupertinoIcons.eye_slash_fill)
-                          : const Icon(CupertinoIcons.eye_fill),
-                    )),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5),
+                      borderSide: BorderSide(color: Colors.grey.shade100)),
+                  hintText: 'Enter Password',
+                  label: const Text('Password'),
+                  prefixIcon: const Icon(Icons.lock),
+                  suffixIcon: InkWell(
+                    onTap: () {
+                      if (passToggle == true) {
+                        passToggle = false;
+                      } else {
+                        passToggle = true;
+                      }
+                      setState(() {});
+                    },
+                    child: passToggle
+                        ? const Icon(CupertinoIcons.eye_slash_fill)
+                        : const Icon(CupertinoIcons.eye_fill),
+                  ),
+                ),
               ),
             ),
             const SizedBox(
@@ -97,81 +98,30 @@ class _LoginScreenState extends State<LoginScreen> {
             Padding(
               padding: const EdgeInsets.all(10),
               child: SizedBox(
-                width: 200,
+                width: double.infinity,
                 child: Material(
                   color: orangeColor,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(25),
                   child: InkWell(
                     onTap: () async {
-
-                       User? user = await _authService.signInWithEmailPassword(
-                _emailController.text, 
-                _passwordController.text
-              );
-              if (user != null) {
-                       Navigator.push(
-                        // ignore: use_build_context_synchronously
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const UserNavbarScreen(),
-                        ),
-                      );
-              }
-            },
-               
-              
-                  
+                      User? user = await _authService.signInWithEmailPassword(
+                          _emailController.text, _passwordController.text);
+                      if (user != null) {
+                        Navigator.push(
+                          // ignore: use_build_context_synchronously
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const UserNavbarScreen(),
+                          ),
+                        );
+                      }
+                    },
                     child: const Padding(
                       padding:
                           EdgeInsets.symmetric(horizontal: 40, vertical: 15),
                       child: Center(
                         child: Text(
                           "Log In",
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-
-
-             const SizedBox(
-              height: 20,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: SizedBox(
-                width: 200,
-                child: Material(
-                  color: orangeColor,
-                  borderRadius: BorderRadius.circular(10),
-                  child: InkWell(
-                    onTap: () async {
-User? user = await _authService.signInWithGoogle();
-              if (user != null) {
-                       Navigator.push(
-                        // ignore: use_build_context_synchronously
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const UserNavbarScreen(),
-                        ),
-                      );
-              }
-            },
-               
-              
-                  
-                    child: const Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                      child: Center(
-                        child: Text(
-                          "Google Log In",
                           style: TextStyle(
                               color: Colors.white,
                               fontSize: 18,
@@ -183,8 +133,40 @@ User? user = await _authService.signInWithGoogle();
                 ),
               ),
             ),
-            const SizedBox(
-              height: 20,
+            SizedBox(height: 20,),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 10,horizontal: 10),
+              child: Row(
+                children: const [
+                  Expanded(child: Divider()),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 10),
+                    child: Text('OR'),
+                  ),
+                  Expanded(child: Divider()),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: SizedBox(
+                width: double.infinity,
+                height: 50,
+                child: OutlinedButton.icon(
+                  icon: SvgPicture.asset(
+                    "assets/images/google_icon.svg",
+                    width: 23,
+                    height: 23,
+                  ),
+                  label: const Text(
+                    'Sign in with Google',
+                    style: TextStyle(fontSize: 16, color: Colors.black),
+                  ),
+                  onPressed: () {},),
+              ),
+            ),
+             SizedBox(
+              height: height *0.01,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -192,27 +174,28 @@ User? user = await _authService.signInWithGoogle();
                 const Text(
                   "Don't have any account",
                   style: TextStyle(
-                      color: Colors.black54,
+                      color: Colors.black,
                       fontSize: 16,
                       fontWeight: FontWeight.w500),
                 ),
                 TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SignUpScreen(),
-                        ),
-                      );
-                    },
-                    child: Text(
-                      'Create Account',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: orangeColor,
-                        fontWeight: FontWeight.bold,
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const SignUpScreen(),
                       ),
-                    ))
+                    );
+                  },
+                  child: Text(
+                    'Create Account',
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: orangeColor,
+
+                    ),
+                  ),
+                ),
               ],
             )
           ],

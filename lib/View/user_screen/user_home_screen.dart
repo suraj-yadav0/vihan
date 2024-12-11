@@ -4,6 +4,8 @@ import 'package:vihan/View/login_logout/login_screen.dart';
 import 'package:vihan/View/user_screen/find_route_screen.dart';
 import 'package:vihan/View/user_screen/menu_screen.dart';
 import 'package:vihan/View/user_screen/search_location.dart';
+import 'package:vihan/View/user_screen/user_profile_screen.dart';
+import 'package:vihan/View/user_screen/user_report_screen.dart';
 
 import 'package:vihan/utils/colors.dart';
 
@@ -78,7 +80,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const ProfileScreen(),
+                    builder: (context) => const UserProfileScreen(),
                   ),
                 );
               },
@@ -92,7 +94,7 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const ReportScreen(),
+                    builder: (context) => const UserReportScreen(),
                   ),
                 );
               },
@@ -141,11 +143,116 @@ class _UserHomeScreenState extends State<UserHomeScreen> {
         centerTitle: true,
         backgroundColor: orangeColor,
       ),
-      body: const Stack(
+      body: Stack(
         children: [
-           GoogleMapScreen(),
+           const GoogleMapScreen(),
           // Existing search bar and floating action buttons remain the same
           // (as in the original implementation)
+          // Search bar at the top
+          Positioned(
+            top: 20,
+            left: 20,
+            right: 20,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SearchLocation(),
+                  ),
+                );
+              },
+              child: Container(
+                height: 55,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: const Row(
+                  children: [
+                    SizedBox(
+                      width: 20,
+                    ),
+                    Icon(Icons.search),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'Search Location',
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+
+          // Floating action buttons
+          Positioned(
+            right: 20,
+            bottom: 50,
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 50,
+                  width: 50,
+                  child: FloatingActionButton(
+                    backgroundColor: orangeColor,
+                    onPressed: () {},
+                    mini: true,
+                    heroTag: 'centerButton',
+                    child: const Icon(
+                      Icons.adjust_rounded,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                 SizedBox(
+                  height: 60,
+                  width: 60,
+                  child: FloatingActionButton(
+                    backgroundColor: orangeColor,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const FindRouteScreen(),
+                        ),
+                      );
+                    },
+                    mini: true,
+                    heroTag: 'directionButton',
+                    child: const Icon(
+                      Icons.directions,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // Bottom floating buttons (map and directions)
+           Positioned(
+            left: 20,
+            bottom: 50,
+            child: SizedBox(
+              height: 50,
+              width: 50,
+              child: FloatingActionButton(
+                backgroundColor: orangeColor,
+                onPressed: () {},
+                mini: true,
+                heroTag: 'trafficButton',
+                child: const Icon(
+                  Icons.traffic,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
