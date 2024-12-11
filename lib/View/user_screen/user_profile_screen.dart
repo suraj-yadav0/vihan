@@ -139,27 +139,24 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 ),
               ),
               const SizedBox(
-                height: 25,
+                height: 35,
               ),
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Material(
-                    color: orangeColor,
-                    borderRadius: BorderRadius.circular(10),
-                    child: const InkWell(
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                        child: Center(
-                          child: Text(
-                            "Update",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 22,
-                                fontWeight: FontWeight.w500),
-                          ),
+              SizedBox(
+                width: double.infinity,
+                child: Material(
+                  color: orangeColor,
+                  borderRadius: BorderRadius.circular(25),
+                  child: const InkWell(
+                    child: Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                      child: Center(
+                        child: Text(
+                          "Update",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
                     ),
@@ -167,30 +164,27 @@ class _UserProfileScreenState extends State<UserProfileScreen> {
                 ),
               ),
               const SizedBox(
-                height: 25,
+                height: 20,
               ),
-              Padding(
-                padding: const EdgeInsets.all(10),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: Material(
-                    color: orangeColor,
-                    borderRadius: BorderRadius.circular(10),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 40, vertical: 15),
-                        child: Center(
-                          child: Text(
-                            "Logout",
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 22,
-                                fontWeight: FontWeight.w500),
-                          ),
+              SizedBox(
+                width: double.infinity,
+                child: Material(
+                  color: orangeColor,
+                  borderRadius: BorderRadius.circular(25),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Padding(
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                      child: Center(
+                        child: Text(
+                          "Logout",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
                     ),

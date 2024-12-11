@@ -23,66 +23,63 @@ class ManagerAlertScreen extends StatelessWidget {
       body: ListView.builder(
         itemCount: 6, // You can dynamically adjust the number of alerts
         itemBuilder: (context, index) {
-          return const TrafficAlertCard();
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: TrafficConditionCard(
+              title: 'Heavy Traffic',
+              subtitle: 'Expect delays due to road construction.',
+              imagePath: 'assets/images/traffic1.jpg',
+            ),
+          );
         },
       ),
     );
   }
 }
 
-// Widget for individual Traffic Alert Card
-class TrafficAlertCard extends StatelessWidget {
-  const TrafficAlertCard({super.key});
+class TrafficConditionCard extends StatelessWidget {
+  final String title;
+  final String subtitle;
+  final String imagePath;
+
+  const TrafficConditionCard({
+    Key? key,
+    required this.title,
+    required this.subtitle,
+    required this.imagePath,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          children: [
-            // Placeholder for image
-            Container(
-              width: 60,
-              height: 60,
-              color: Colors.orange[100],
-              child: const Icon(Icons.image, color: Colors.orange, size: 40),
-            ),
-            const SizedBox(width: 16),
-            // Text description
-            const Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'Heavy Traffic on 101 South',
-                    style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.orange,
-                    ),
-                  ),
-                  SizedBox(height: 8),
-                  Text(
-                    '1 min ago',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            // Icon for location
-            Icon(
-              Icons.location_on,
-              color: Colors.orange[700],
-              size: 28,
-            ),
-          ],
+      margin: const EdgeInsets.only(bottom: 8),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      child: ListTile(
+        contentPadding: const EdgeInsets.all(16),
+        leading: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: Image.asset(
+            imagePath,
+            width: 60,
+            height: 60,
+            fit: BoxFit.cover,
+          ),
         ),
+        title: Text(
+          title,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        subtitle: Text(subtitle),
+        trailing:
+          Text(
+            '1 min ago',
+            style: TextStyle(
+              fontSize: 14,
+              color: orangeColor,
+            ),
+          ),
       ),
     );
   }
 }
+

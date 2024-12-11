@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vihan/View/widgets/google_map.dart';
+import 'package:vihan/View/google_map.dart';
 import 'package:vihan/View/management_screen/manager_map_screen.dart';
 import 'package:vihan/View/user_screen/user_report_screen.dart';
 import 'package:vihan/utils/colors.dart';
@@ -98,6 +98,7 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                           InkWell(
                             onTap: () {
                               // Add your functionality for Traffic Updates
+                              Navigator.push(context, MaterialPageRoute(builder: (context)=>TrafficUpdatesScreen()));
                             },
                             child: buildCategoryIcon(
                               context,
@@ -123,6 +124,13 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
                           InkWell(
                             onTap: () {
                               // Add your functionality for Route Optimization
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                   AdminRouteOptimizationScreen(),
+                                ),
+                              );
                             },
                             child: buildCategoryIcon(
                                 context, 'Route Optimization', Icons.alt_route),
@@ -199,6 +207,7 @@ class _ManagerHomeScreenState extends State<ManagerHomeScreen> {
             title: const Text('Traffic Updates'),
             onTap: () {
               // Add Traffic Updates functionality
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>TrafficUpdatesScreen()));
             },
           ),
           ListTile(
