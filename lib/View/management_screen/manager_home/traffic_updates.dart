@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vihan/View/google_Map.dart';
+
 import 'package:vihan/View/management_screen/manager_home/add_traffic_update.dart';
+import 'package:vihan/View/widgets/google_map.dart';
 
 import '../../../utils/colors.dart';
 import 'manager_home_screen.dart';

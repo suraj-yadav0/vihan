@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:vihan/View/google_Map.dart';
+
 import 'package:vihan/View/management_screen/manager_home/manager_home_screen.dart';
+import 'package:vihan/View/widgets/google_map.dart';
 import 'package:vihan/utils/colors.dart';
 
 class AdminRouteOptimizationScreen extends StatelessWidget {

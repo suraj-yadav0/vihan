@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:vihan/View/google_map.dart';
+
+import 'package:vihan/View/management_screen/manager_home/route_optimization.dart';
+import 'package:vihan/View/management_screen/manager_home/traffic_updates.dart';
 import 'package:vihan/View/management_screen/manager_map_screen.dart';
 import 'package:vihan/View/user_screen/user_report_screen.dart';
+import 'package:vihan/View/widgets/google_map.dart';
 import 'package:vihan/utils/colors.dart';
 
 class ManagerHomeScreen extends StatefulWidget {
